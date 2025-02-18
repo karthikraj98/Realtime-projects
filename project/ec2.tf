@@ -1,7 +1,7 @@
 resource "aws_instance" "terraform" {
   count = length(var.instance_names)
-  ami           = data_aws_ami.id
-  instance_type = var.instance_names{count.index] == "mysql" ? "t3.small" : "t3.micro" 
+  ami           = data.aws_ami.info.id
+  instance_type = var.instance_names[count.index] == "mysql" ? "t3.small" : "t3.micro" 
   tags = {
     Name = var.instance_names[count.index]
   }

@@ -1,18 +1,22 @@
-# Find the latest available AMI that is tagged with Component = web
-data "aws_ami" "ami_id" {
+# Find the latest available AMI that is tagged with Component = RHEL-9-DevOps-Practice
+data "aws_ami" "info" {
 
     most_recent = true
-    owners = []
+    owners = ["973714476881"]
 
-  filter {
-    name   = "state"
-    values = ["available"]
+filter {
+    name   = "name"
+    values = ["RHEL-9-DevOps-Practice"]
   }
 
   filter {
-    name   = "tag:Component"
-    values = ["web"]
+    name   = "root-device-type"
+    values = ["ebs"]
   }
 
-  
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
 }
